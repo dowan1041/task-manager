@@ -8,6 +8,7 @@ const uri ='mongodb://admin:qlqjs123@ac-ovlpjo4-shard-00-00.zbqukr1.mongodb.net:
 const bodyParser = require('body-parser');
 
 // Load in the mongoose models
+
 const { List, Task, User } = require('./db/models');
 
 const jwt = require('jsonwebtoken');
@@ -45,6 +46,7 @@ app.use(function (req, res, next) {
 
 
 // check whether the request has a valid JWT access token
+
 let authenticate = (req, res, next) => {
     let token = req.header('x-access-token');
 
