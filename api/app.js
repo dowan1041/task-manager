@@ -3,6 +3,8 @@ const app = express();
 
 const { mongoose } = require('./db/mongoose');
 
+const uri ='mongodb://admin:qlqjs123@ac-ovlpjo4-shard-00-00.zbqukr1.mongodb.net:27017,ac-ovlpjo4-shard-00-01.zbqukr1.mongodb.net:27017,ac-ovlpjo4-shard-00-02.zbqukr1.mongodb.net:27017/?ssl=true&replicaSet=atlas-66euit-shard-0&authSource=admin&retryWrites=true&w=majority'
+
 const bodyParser = require('body-parser');
 
 // Load in the mongoose models
@@ -10,6 +12,16 @@ const { List, Task, User } = require('./db/models');
 
 const jwt = require('jsonwebtoken');
 
+async function connect () {
+    try {
+        await mongoose.connect(uri)
+        console.log("connected to MongoDB")
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+connect();
 
 /* MIDDLEWARE  */
 
